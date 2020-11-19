@@ -1,54 +1,51 @@
 package com.company.Classes;
 
-public class Rectangle {
+public class Rectangles {
 
+    private static final int NUMOFRECTANGLES = 10;
 
-    public void setA_side(double a_side) {
-        this.a_side = a_side;
+    public Rectangles() {
     }
 
-    public void setB_side(double b_side) {
-        this.b_side = b_side;
+    //  создание и инициализация массива прямоугольников
+    public static Rectangle[] miniRectangle /**/= new Rectangle[NUMOFRECTANGLES];
+
+    public static void rectangleCreation(){
+        miniRectangle[0] = new Rectangle(2.0d, 3.0d);
+        miniRectangle[1] = new Rectangle(3.0d, 4.0d);
+        miniRectangle[2] = new Rectangle(4.0d, 5.0d);
+        miniRectangle[3] = new Rectangle(12.0d, 14.0d);
+        miniRectangle[4] = new Rectangle(17.0d, 15.0d);
+        miniRectangle[5] = new Rectangle(18.0d, 3.0d);
+        miniRectangle[6] = new Rectangle(9.0d, 10.0d);
+        miniRectangle[7] = new Rectangle(4.0d, 5.0d);
+        miniRectangle[8] = new Rectangle(10.0d, 23.0d);
+        miniRectangle[9] = new Rectangle(13.0d, 14.0d);
     }
 
-    private double a_side;
-    private double b_side;
-
-
-    public double getA_side() {
-        return a_side;
+    //  возврат средней площади
+    private static double getAverageArea(){
+        double sum=0;
+        for (int i = 0; i < NUMOFRECTANGLES; i++){
+            sum += miniRectangle[i].Area();
+        }
+        sum /= NUMOFRECTANGLES;
+        int iterator = 0;
+        for (int i = 0; i < NUMOFRECTANGLES; i++){
+            if(miniRectangle[i].Area() > sum /*getAverageArea()*/) iterator++;
+        }
+        return iterator;
     }
 
-    public double getB_side() {
-        return b_side;
+    //  результат
+    public static void Outputting(){
+        System.out.println(getAverageArea());
+        System.out.println("\n\nNumber of rectangles with area higher than intermediate is " + getAverageArea());
     }
-
-    private final int SAMEEDGES = 2;
-
-    public Rectangle(double a_side, double b_side) {
-        this.a_side = a_side;
-        this.b_side = b_side;
-    }
-
-    //  диагональ
-    public double Diagonal(){ return Math.sqrt(Math.pow(a_side, 2) + Math.pow(b_side, 2)); }
-
-    //  периметр
-    public double Perimeter(){ return a_side * 2 + b_side * 2; }
-
-    //  площадь
-    public double Area(){ return a_side * b_side; }
-
-//  вывод на  э к р а н
-//    public void Outputting(){
-//        System.out.println("\n<>Rectangle<>\nDiagonal is " + Diagonal() + "\nPerimeter is " + Perimeter() + "\nArea is " + Area());
-//    }
 
 
     @Override
     public String toString() {
-        return "\n<>Rectangle<>\nDiagonal is " + Diagonal() + "\nPerimeter is " + Perimeter() + "\nArea is " + Area();
+        return "\n\nNumber of rectangles with area higher than intermediate is " + getAverageArea();
     }
 }
-
-

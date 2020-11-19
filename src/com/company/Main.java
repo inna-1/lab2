@@ -16,7 +16,6 @@ public class Main {
         double c_side;
 
 
-
         out.println("Set \"a\" length");
         Scanner aInner = new Scanner(in);
         out.println("Set \"b\" length");
@@ -28,10 +27,10 @@ public class Main {
         b_side = bInner.nextDouble();
         c_side = cInner.nextDouble();
 
-        if(c_side < 1e-6) {
+        if (c_side < 1e-6) {
             Rectangle rectangle = new Rectangle(a_side, b_side);
             out.println(rectangle);
-        }else {
+        } else {
             Parallelepiped parallelepiped = new Parallelepiped(a_side, b_side, c_side);
             out.println(parallelepiped);
         }
@@ -41,3 +40,5 @@ public class Main {
         Rectangles.Outputting();
         Parallelepipeds.Outputting();
     }
+}
+
